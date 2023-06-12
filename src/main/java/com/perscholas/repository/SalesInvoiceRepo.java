@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface SalesInvoiceRepo extends JpaRepository<SalesInvoice,Integer> {
+public interface SalesInvoiceRepo extends JpaRepository<SalesInvoice, Integer> {
 }

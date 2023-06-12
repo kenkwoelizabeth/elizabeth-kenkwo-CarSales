@@ -1,17 +1,24 @@
-package com.perscholas.entity;
+package com.perscholas.Car;
 
+
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table
-public class Car implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //fields
     private int carId;
+
+    @NotNull
+    @Size(min=2, max=30)
     private String carMake;
     private String carModel;
     private String carColour;
@@ -83,5 +90,17 @@ public class Car implements Serializable {
 
     public void setCarPrice(double carPrice) {
         this.carPrice = carPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        return getCarId() == car.getCarId() && Double.compare(car.getCarPrice(), getCarPrice()) == 0 && Objects.equals(getCarMake(), car.getCarMake()) && Objects.equals(getCarModel(), car.getCarModel()) && Objects.equals(getCarColour(), car.getCarColour()) && Objects.equals(getCarYear(), car.getCarYear());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCarId(), getCarMake(), getCarModel(), getCarColour(), getCarYear(), getCarPrice());
     }
 }

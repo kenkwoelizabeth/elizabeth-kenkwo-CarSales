@@ -1,6 +1,8 @@
 package com.perscholas.entity;
 
 
+import com.perscholas.Car.Car;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
