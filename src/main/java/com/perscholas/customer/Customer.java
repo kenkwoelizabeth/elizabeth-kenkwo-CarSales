@@ -1,7 +1,8 @@
-package com.perscholas.entity;
+package com.perscholas.customer;
 
 
 import com.perscholas.Car.Car;
+import com.perscholas.salesInvoice.SalesInvoice;
 
 import javax.persistence.*;
 import java.io.Serializable;

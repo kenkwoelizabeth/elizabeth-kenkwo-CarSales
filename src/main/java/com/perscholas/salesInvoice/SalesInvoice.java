@@ -1,8 +1,11 @@
-package com.perscholas.entity;
+package com.perscholas.salesInvoice;
 
+
+import com.perscholas.Car.Car;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table
@@ -14,6 +17,9 @@ public class SalesInvoice implements Serializable {
     private int invoiceId;
     private String invoiceDate;
 
+
+    @OneToMany(targetEntity = Car.class, cascade = CascadeType.ALL)
+    private List carList;
 
     // CONSTRUCTOR
 
@@ -42,5 +48,13 @@ public class SalesInvoice implements Serializable {
 
     public void setInvoiceDate(String invoiceDate) {
         this.invoiceDate = invoiceDate;
+    }
+
+    public List getCarList() {
+        return carList;
+    }
+
+    public void setCarList(List carList) {
+        this.carList = carList;
     }
 }

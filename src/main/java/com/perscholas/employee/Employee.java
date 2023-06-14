@@ -1,5 +1,8 @@
-package com.perscholas.entity;
+package com.perscholas.employee;
 
+
+import com.perscholas.Car.Car;
+import com.perscholas.salesInvoice.SalesInvoice;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table
-public class SalesPerson implements Serializable {
+public class Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //FIELDS
@@ -19,12 +22,15 @@ public class SalesPerson implements Serializable {
 
 
     // ORM MAPPING
+
+    @ManyToMany(targetEntity = Car.class, cascade = CascadeType.ALL)
+    private List carList;
     @OneToMany(targetEntity = SalesInvoice.class, cascade = CascadeType.ALL)
     private List<SalesInvoice> salesInvoice;
 
     // CONSTRUCTOR
 
-    public SalesPerson() {
+    public Employee() {
     }
 
     public int getSalesPersonId() {

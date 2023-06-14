@@ -1,6 +1,6 @@
-package com.perscholas.repository;
+package com.perscholas.customer;
 
-import com.perscholas.entity.Customer;
+import com.perscholas.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
