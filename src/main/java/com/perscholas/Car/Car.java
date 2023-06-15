@@ -1,11 +1,14 @@
 package com.perscholas.Car;
 
 
+import com.perscholas.salesInvoice.SalesInvoice;
+import com.perscholas.salesRep.SalesRep;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,6 +29,8 @@ public class Car {
     private double carPrice;
 
 
+    @OneToMany(targetEntity = SalesInvoice.class, cascade = CascadeType.ALL)
+    private List salesInvoice;
     // constructors
 
 
@@ -90,6 +95,14 @@ public class Car {
 
     public void setCarPrice(double carPrice) {
         this.carPrice = carPrice;
+    }
+
+    public List getSalesInvoice() {
+        return salesInvoice;
+    }
+
+    public void setSalesInvoice(List salesInvoice) {
+        this.salesInvoice = salesInvoice;
     }
 
     @Override

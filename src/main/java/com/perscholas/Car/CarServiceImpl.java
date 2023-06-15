@@ -1,5 +1,7 @@
 package com.perscholas.Car;
 
+import com.perscholas.customer.Customer;
+import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,10 @@ public class CarServiceImpl implements CarService {
         carRepo.save(car);
     }
 
+    public Car updateCar(Car car) {
+        return carRepo.save(car);
+    }
+
     @Override
     public Car getCarById(int carId) {
         Optional<Car> optionalCar =   carRepo.findById(carId);
@@ -55,6 +61,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public void deleteCarById(int carId) {
         carRepo.deleteById(carId);
+    }
+
+    public List<SalesInvoice> getCarInvoices(int carId) {
+        Car car = getCarById(carId);
+        return car.getSalesInvoice();
     }
     }
 
