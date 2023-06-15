@@ -1,13 +1,11 @@
-package com.perscholas.Car;
+package com.perscholas.car;
 
 
 import com.perscholas.salesInvoice.SalesInvoice;
-import com.perscholas.salesRep.SalesRep;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 

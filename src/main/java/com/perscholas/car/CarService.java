@@ -1,6 +1,5 @@
-package com.perscholas.Car;
+package com.perscholas.car;
 
-import com.perscholas.Car.Car;
 import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.stereotype.Service;
 

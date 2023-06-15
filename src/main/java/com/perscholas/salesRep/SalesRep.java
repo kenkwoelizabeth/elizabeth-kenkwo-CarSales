@@ -1,8 +1,6 @@
 package com.perscholas.salesRep;
 
 
-import com.perscholas.Car.Car;
-import com.perscholas.customer.Customer;
 import com.perscholas.salesInvoice.SalesInvoice;
 
 import javax.persistence.*;

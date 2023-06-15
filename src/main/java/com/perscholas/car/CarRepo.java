@@ -1,10 +1,7 @@
-package com.perscholas.Car;
+package com.perscholas.car;
 
-import com.perscholas.Car.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository

@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
-    Optional<Customer> updateCustomerById(int customerId, Customer updatedCustomer);
+    Optional<Customer> findByCustomerId(int customerId);
 }

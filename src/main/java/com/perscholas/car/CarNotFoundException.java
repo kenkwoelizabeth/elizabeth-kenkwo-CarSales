@@ -1,4 +1,4 @@
-package com.perscholas.Car;
+package com.perscholas.car;
 
 
 import org.springframework.http.HttpStatus;

@@ -1,10 +1,12 @@
 package com.perscholas.salesRep;
 
-import com.perscholas.Car.Car;
 import com.perscholas.salesInvoice.SalesInvoice;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public interface SalesRepService {
     public List<SalesRep> getAllSalesReps();
     public SalesRep getSalesRepsById(int salesRepId);

@@ -1,7 +1,7 @@
 package com.perscholas.salesInvoice;
 
 
-import com.perscholas.Car.Car;
+import com.perscholas.car.Car;
 import com.perscholas.customer.Customer;
 import com.perscholas.salesRep.SalesRep;
 

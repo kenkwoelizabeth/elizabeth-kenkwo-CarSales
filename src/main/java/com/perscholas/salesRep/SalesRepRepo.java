@@ -8,8 +8,6 @@ import java.util.List;
 @Repository
 public interface SalesRepRepo extends JpaRepository<SalesRep, Integer> {
 
-    List<SalesRep> findByCarId(int carId);
-
 
 
 }

@@ -1,15 +1,17 @@
 package com.perscholas.customer;
 
-import com.perscholas.Car.Car;
-import com.perscholas.Car.CarNotFoundException;
-import com.perscholas.Car.CarRepo;
+import com.perscholas.customer.CustomerRepo;
 import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerServiceImpl {
+
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepo customerRepo;
     private Customer customer;
@@ -38,8 +40,8 @@ public class CustomerServiceImpl {
         customerRepo.save(customer);
     }
 
-    public Optional<Customer> updateCustomerById(int customerId, Customer updatedCustomer){
-        return customerRepo.updateCustomerById(customerId, updatedCustomer);
+    public Optional<Customer> updateCustomerById(int customerId){
+        return customerRepo.findByCustomerId(customerId);
     }
 
     public void deleteCustomer(int customerId){

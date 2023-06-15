@@ -1,13 +1,16 @@
 package com.perscholas.salesRep;
 
-import com.perscholas.Car.Car;
-import com.perscholas.Car.CarRepo;
+import com.perscholas.car.CarRepo;
 import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+
+@Service
 public class SalesRepServiceImpl implements SalesRepService {
     private SalesRepRepo employeeRepo;
     private CarRepo carRepo;
