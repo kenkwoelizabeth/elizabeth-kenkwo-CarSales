@@ -12,12 +12,12 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan
 public class ElizabethKenkwoCarSalesApplication {
-
     public static void main(String[] args) {
 
         SpringApplication.run(ElizabethKenkwoCarSalesApplication.class, args);
 
     }
+
     @Bean
     public CommandLineRunner commandLineRunner(CarService carService) {
         return args -> System.out.println("My application got started!!");

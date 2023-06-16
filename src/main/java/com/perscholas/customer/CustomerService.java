@@ -8,7 +8,6 @@ import java.util.Optional;
 
 
 
-@Service
 public interface CustomerService {
 
     public List<Customer> getAllCustomers();
@@ -17,12 +16,13 @@ public interface CustomerService {
 
     public void saveCustomer(Customer customer);
 
-
-    public Optional<Customer> updateCustomerById(int customerId);
+    public Customer updateCustomer(Customer customer);
 
     public void deleteCustomer(int customerId);
 
-    public List<SalesInvoice> getSalesInvoiceByCustomerId(int customerId) ;
+    public List<SalesInvoice> getSalesInvoiceByCustomerId(int customerId);
+
+    public void addSalesInvoiceToCustomer(int customerId, SalesInvoice salesInvoice);
 
 
 }

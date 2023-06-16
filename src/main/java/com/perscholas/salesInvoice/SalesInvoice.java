@@ -21,27 +21,25 @@ public class SalesInvoice implements Serializable {
 
     private double invoiceAmount;
     @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
-    private List customerList;
+    private Customer customer;
 
     @ManyToOne(targetEntity = Car.class, cascade = CascadeType.ALL)
-    private List carList;
+    private Car car;
 
 
     @ManyToOne(targetEntity = SalesRep.class, cascade = CascadeType.ALL)
-    private List salesRep;
+    private SalesRep salesRep;
     // CONSTRUCTOR
 
 
     public SalesInvoice() {
     }
 
-    public SalesInvoice(int invoiceId, String invoiceDate, double invoiceAmount, List customerList, List carList, List salesRep) {
+    public SalesInvoice(int invoiceId, String invoiceDate, double invoiceAmount) {
         this.invoiceId = invoiceId;
         this.invoiceDate = invoiceDate;
         this.invoiceAmount = invoiceAmount;
-        this.customerList = customerList;
-        this.carList = carList;
-        this.salesRep = salesRep;
+
     }
 
     public int getInvoiceId() {
@@ -68,27 +66,28 @@ public class SalesInvoice implements Serializable {
         this.invoiceAmount = invoiceAmount;
     }
 
-    public List getCustomerList() {
-        return customerList;
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerList(List customerList) {
-        this.customerList = customerList;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public List getCarList() {
-        return carList;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarList(List carList) {
-        this.carList = carList;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public List getSalesRep() {
+    public SalesRep getSalesRep() {
         return salesRep;
     }
 
-    public void setSalesRep(List salesRep) {
+    public void setSalesRep(SalesRep salesRep) {
         this.salesRep = salesRep;
     }
 }

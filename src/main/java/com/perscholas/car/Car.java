@@ -2,6 +2,7 @@ package com.perscholas.car;
 
 
 import com.perscholas.salesInvoice.SalesInvoice;
+import com.perscholas.salesRep.SalesRep;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Car {
     private int carId;
 
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min = 2, max = 30)
     private String carMake;
     private String carModel;
     private String carColour;
@@ -29,6 +30,10 @@ public class Car {
 
     @OneToMany(targetEntity = SalesInvoice.class, cascade = CascadeType.ALL)
     private List salesInvoice;
+
+
+    @ManyToOne(targetEntity = SalesInvoice.class, cascade = CascadeType.ALL)
+    private SalesRep salesRep;
     // constructors
 
 
@@ -101,6 +106,14 @@ public class Car {
 
     public void setSalesInvoice(List salesInvoice) {
         this.salesInvoice = salesInvoice;
+    }
+
+    public SalesRep getSalesRep() {
+        return salesRep;
+    }
+
+    public void setSalesRep(SalesRep salesRep) {
+        this.salesRep = salesRep;
     }
 
     @Override

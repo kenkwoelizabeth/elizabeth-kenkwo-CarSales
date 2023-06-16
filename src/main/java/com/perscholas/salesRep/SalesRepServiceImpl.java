@@ -1,22 +1,32 @@
 package com.perscholas.salesRep;
 
+import com.perscholas.car.Car;
 import com.perscholas.car.CarRepo;
+import com.perscholas.customer.Customer;
+import com.perscholas.customer.CustomerRepo;
 import com.perscholas.salesInvoice.SalesInvoice;
+import com.perscholas.salesInvoice.SalesInvoiceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 
-
 @Service
 public class SalesRepServiceImpl implements SalesRepService {
-    private SalesRepRepo employeeRepo;
+    @Autowired
+    private SalesRepRepo salesRepRepo;
+
+    @Autowired
+    private SalesInvoiceRepo salesInvoiceRepo;
+
+    @Autowired
     private CarRepo carRepo;
 
     @Autowired
-    private SalesRepRepo salesRepRepo;
+    private CustomerRepo customerRepo;
 
     public List<SalesRep> getAllSalesReps() {
         return salesRepRepo.findAll();
@@ -24,10 +34,10 @@ public class SalesRepServiceImpl implements SalesRepService {
 
     @Override
     public SalesRep getSalesRepsById(int salesRepId) {
-        Optional<SalesRep> salesRep =   salesRepRepo.findById(salesRepId);
-        if (salesRep.isPresent()) {
-            SalesRep salesRep1= salesRep.get();
-            return salesRep1;
+        Optional<SalesRep> optionalSalesRep = salesRepRepo.findById(salesRepId);
+        if (optionalSalesRep.isPresent()) {
+            SalesRep salesRep = optionalSalesRep.get();
+            return salesRep;
         }
         throw new SalesRepNotFoundException();
     }
@@ -46,8 +56,47 @@ public class SalesRepServiceImpl implements SalesRepService {
     }
 
     public List<SalesInvoice> getSalesRepInvoices(int salesRepId) {
-        SalesRep salesRep = getSalesRepsById(salesRepId);
-        return salesRep.getSalesInvoice();
+        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
+        if (salesRep != null) {
+            return salesRep.getSalesInvoice();
+        }
+        return Collections.emptyList();
     }
 
+
+    public void addSalesInvoiceToSalesRep(int salesRepId, SalesInvoice salesInvoice) {
+        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
+        SalesInvoice salesInvoice1 = salesInvoiceRepo.findById(salesInvoice.getInvoiceId()).orElse(null);
+        if (salesRep != null && salesInvoice != null) {
+            salesRep.getSalesInvoice().add(salesInvoice);
+            salesInvoice.setSalesRep(salesRep);
+            salesRepRepo.save(salesRep);
+        }
+    }
+
+    public void removeSalesInvoiceFromSalesRep(int salesRepId, int salesInvoiceId) {
+        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
+        SalesInvoice salesInvoice = salesInvoiceRepo.findById(salesInvoiceId).orElse(null);
+        if (salesRep != null && salesInvoice != null) {
+            salesRep.getSalesInvoice().remove(salesInvoice);
+            salesInvoice.setSalesRep(null);
+            salesRepRepo.save(salesRep);
+        }
+    }
+
+    public List<Car> getSalesRepCars(int salesRepId) {
+        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
+        if (salesRep != null) {
+            return carRepo.findBySalesRepId(salesRepId);
+        }
+        return Collections.emptyList();
+    }
+
+    public List<Customer> getSalesRepByCustomers(int salesRepId) {
+        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
+        if (salesRep != null) {
+            return customerRepo.findBySalesRepId(salesRepId);
+        }
+        return Collections.emptyList();
+    }
 }

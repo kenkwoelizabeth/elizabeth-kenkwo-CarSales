@@ -1,6 +1,10 @@
 package com.perscholas.car;
 
 
+
+import com.perscholas.salesInvoice.SalesInvoice;
+import com.perscholas.salesInvoice.SalesInvoiceService;
+import com.perscholas.salesRep.SalesRepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,22 +14,26 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class CarController {
 
 
+
     private CarService carService;
 
 
-    public CarController() {
-    }
+    private SalesInvoiceService salesInvoiceService;
 
+
+    private SalesRepService salesRepService;
 
     @Autowired
-    public CarController(CarService carService) {
-
+    public CarController(CarService carService, SalesInvoiceService salesInvoiceService, SalesRepService salesRepService) {
         this.carService = carService;
+        this.salesInvoiceService = salesInvoiceService;
+        this.salesRepService = salesRepService;
     }
 
     @GetMapping("/")
@@ -44,7 +52,7 @@ public class CarController {
 
     @PostMapping("/saveCar")
     public String saveCar(@ModelAttribute("car") @Valid Car car,
-                               BindingResult bindingResult) {
+                          BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "car/new_car";
@@ -66,8 +74,6 @@ public class CarController {
         return "car/update_car";
     }
 
-
-
     @GetMapping("/deleteCar/{id}")
     public String deleteEmployee(@PathVariable(value = "id") int carId) {
 
@@ -82,11 +88,38 @@ public class CarController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request) {
         HttpSession httpSession = request.getSession();
         httpSession.invalidate();
         return "redirect:/";
     }
+
+    @GetMapping("/car/{id}/invoices")
+    public String getCarInvoices(@PathVariable(value = "id") int carId, Model model) {
+        model.addAttribute("listCarInvoices", carService.getCarInvoices(carId));
+        return "car/invoices";
+    }
+
+    @PostMapping("/car/{carId}/salesinvoices")
+    public String addSalesInvoiceToCar(@PathVariable int carId, @ModelAttribute SalesInvoice salesInvoice) {
+        Car existingCar = carService.getCarById(carId);
+        salesInvoice.setCar(existingCar);
+        salesInvoiceService.addSalesInvoice(salesInvoice);
+        return "redirect:/car/" + carId;
+    }
+
+    @PostMapping("/car/{carId}/salesRep/{salesRepId}")
+    public String assignEmployeeToCar(@PathVariable int carId, @PathVariable int employeeId) {
+        carService.assignSalesRepToCar(carId, employeeId);
+        return "redirect:/cars/" + carId;
+    }
+
+    @PostMapping("/car/{carId}/employee/remove")
+    public String removeEmployeeFromCar(@PathVariable int carId) {
+        carService.removeSalesRepFromCar(carId);
+        return "redirect:/car/" + carId;
+    }
+
 }
 
 

@@ -1,5 +1,6 @@
 package com.perscholas.car;
 
+import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,9 @@ public class RestCarController {
     }
 
     @GetMapping("/")
+
     public List<Car> getAllCars() {
-        List<Car> allCars = carService.getAllCars();
-        return allCars;
+        return carService.getAllCars();
     }
 
     @GetMapping("/cars/{id}")
@@ -31,5 +32,18 @@ public class RestCarController {
         }
         return carById;
     }
+
+
+    @PutMapping
+    public Car updateCar(@RequestBody Car car) {
+        return carService.updateCar(car);
+    }
+
+
+    @GetMapping("cars/{id}/invoices")
+    public List<SalesInvoice> getCarInvoices(@PathVariable(value = "id") int carId) {
+        return carService.getCarInvoices(carId);
+    }
+
 
 }
