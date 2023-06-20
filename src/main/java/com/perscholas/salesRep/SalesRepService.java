@@ -26,7 +26,5 @@ public interface SalesRepService {
 
     public void removeSalesInvoiceFromSalesRep(int salesRepId, int salesInvoiceId);
 
-    public List<Car> getSalesRepCars(int salesRepId);
 
-    public List<Customer> getSalesRepByCustomers(int salesRepId);
 }

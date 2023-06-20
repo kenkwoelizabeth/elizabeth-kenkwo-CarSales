@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/salesrep")
 public class SalesRepController {
     @Autowired
     private SalesRepService salesRepService;
@@ -22,7 +23,7 @@ public class SalesRepController {
     public String getAllSalesReps(Model model) {
         List<SalesRep> salesReps = salesRepService.getAllSalesReps();
         model.addAttribute("salesReps", salesReps);
-        return "salesreps";
+        return "salesReps";
     }
 
     @GetMapping("/{id}")
@@ -32,7 +33,7 @@ public class SalesRepController {
             model.addAttribute("salesRep", salesRep);
             return "salesrep";
         }
-        return "notfound";
+        return "SalesRep not found";
     }
 
     @PostMapping
@@ -91,11 +92,6 @@ public class SalesRepController {
         return "redirect:/salesreps/" + salesRepId + "/salesinvoices";
     }
 
-    @GetMapping("/{id}/cars")
-    public String getSalesRepCars(@PathVariable("id") int salesRepId, Model model) {
-        List<Car> cars = salesRepService.getSalesRepCars(salesRepId);
-        model.addAttribute("cars", cars);
-        return "cars";
-    }
+
 
 }

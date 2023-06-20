@@ -3,13 +3,13 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="/css/home.css" type="text/css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="/css/home.css" type="text/css" rel="stylesheet" />
 
-<title>Lizzy Autos</title>
+    <title>Lizzy Autos</title>
 </head>
 <body>
 
@@ -52,50 +52,29 @@
 
 
 
-<div class="container my-2">
-    <h1>Car List</h1>
 
-    <a th:href="@{/my_cars}" class="btn btn-primary btn-sm mb-3"> Add Cars </a>
+<div class="container">
+    <h1>Car Sales System</h1>
+    <hr>
+    <h2>Save Customer</h2>
+
+    <form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
+        <input type="text" th:field="*{customerName}" placeholder="Customer Name" class="form-control mb-4 col-4" >
+        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Customer Name Error</div>
+
+        <input type="text" th:field="*{customerContact}" placeholder="customer Contact" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{customerAddress}" placeholder="Customer Address" class="form-control mb-4 col-4">
 
 
 
+        <button type="submit" class="btn btn-info col-2"> Save Customer</button>
+    </form>
 
-
-    <table class="table table-striped table-responsive-md">
-        <thead>
-        <tr>
-            <th>Car ID</th>
-            <th>Car Make</th>
-            <th>Car Model</th>
-            <th>Car Colour</th>
-            <th>Car Year</th>
-            <th>Car Price</th>
-            <th> Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="car: ${listCars}">
-            <td th:text="${car.carId}"></td>
-            <td th:text="${car.carMake}"></td>
-            <td th:text="${car.carModel}"></td>
-            <td th:text="${car.carColour}"></td>
-            <td th:text="${car.carYear}"></td>
-            <td th:text="${car.carPrice}"></td>
-            <td><a th:href="@{/my_cars/{id}(id=${car.carId})}"
-                   class="btn btn-primary">Edit</a>
-                <a th:href="@{/deleteCar/{id}(id=${car.carId})}"
-                   class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="container my-2">
-    <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Log out </a>
-</div>
-
-<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
-
+    <hr>
+    <p><a class="btn btn-outline-success" href="/customer">
+        <i class="bi bi-arrow-left-square-fill"></i>Back to Customer List</a>
+    </p> </div>
 </body>
+
 </html>

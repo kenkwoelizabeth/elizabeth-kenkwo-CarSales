@@ -39,7 +39,7 @@ public class SalesInvoiceServiceImpl implements SalesInvoiceService {
         return optionalInvoice.orElse(null);
     }
 
-    public SalesInvoice addSalesInvoice(SalesInvoice salesInvoice) {
+    public SalesInvoice saveSalesInvoice(SalesInvoice salesInvoice) {
 
         return salesInvoiceRepo.save(salesInvoice);
     }

@@ -18,6 +18,8 @@ public class ElizabethKenkwoCarSalesApplication {
 
     }
 
+
+    // defining a bean
     @Bean
     public CommandLineRunner commandLineRunner(CarService carService) {
         return args -> System.out.println("My application got started!!");

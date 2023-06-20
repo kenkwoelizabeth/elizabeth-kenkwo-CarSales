@@ -1,5 +1,6 @@
 package com.perscholas.customer;
 
+import com.perscholas.car.Car;
 import com.perscholas.salesInvoice.SalesInvoice;
 import com.perscholas.salesInvoice.SalesInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +23,39 @@ public class CustomerController {
     public CustomerController() {
     }
 
-    @GetMapping
+    @GetMapping("/customer")
     public String getAllCustomers(Model model) {
         List<Customer> customers = customerService.getAllCustomers();
         model.addAttribute("listCustomers", customers);
-        return "customer_list";
+        return "customer/customer_list";
     }
 
-    @GetMapping("/customer/{customerId}")
-    public String getCustomerById(@PathVariable int customerId, Model model) {
+    @GetMapping("/my_customers")
+    public String getMyCars(Model model) {
+        // create model attribute to bind form data
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
+        return "customer/new_customer";
+    }
+
+    @GetMapping("/my_customers/{id}")
+    public String getCustomerById(@PathVariable(value="id") int customerId, Model model) {
         Customer customer = customerService.getCustomerById(customerId);
         model.addAttribute("customer", customer);
-        return "customer_details";
+        return "customer/update_customer";
     }
 
-    @PostMapping("/customer")
+    @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute Customer customer) {
         customerService.saveCustomer(customer);
-        return "redirect:/customers";
+        return "redirect:/customer";
     }
 
 
-    @DeleteMapping("/customer/{customerId}")
-    public String deleteCustomer(@PathVariable int customerId) {
+    @GetMapping("/deleteCustomer/{id}")
+    public String deleteCustomer(@PathVariable(value="id") int customerId) {
         customerService.deleteCustomer(customerId);
-        return "redirect:/customers";
+        return "redirect:/customer";
     }
 
     @GetMapping("/customer/{customerId}/invoices")
@@ -60,7 +69,7 @@ public class CustomerController {
     public String addSalesInvoiceToCustomer(@PathVariable int customerId, @ModelAttribute SalesInvoice salesInvoice) {
         Customer existingCustomer = customerService.getCustomerById(customerId);
         salesInvoice.setCustomer(existingCustomer);
-        salesInvoiceService.addSalesInvoice(salesInvoice);
+        salesInvoiceService.saveSalesInvoice(salesInvoice);
         return "redirect:/customers/" + customerId;
     }
 }

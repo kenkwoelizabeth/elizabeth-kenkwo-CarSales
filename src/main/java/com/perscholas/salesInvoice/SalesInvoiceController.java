@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/salesinvoice")
 public class SalesInvoiceController {
     @Autowired
     private SalesInvoiceService salesInvoiceService;
@@ -31,15 +30,24 @@ public class SalesInvoiceController {
     public SalesInvoiceController() {
     }
 
-    @GetMapping
+    @GetMapping("/salesInvoice")
     public String getAllSalesInvoices(Model model) {
         List<SalesInvoice> salesInvoices = salesInvoiceService.getAllSalesInvoices();
-        model.addAttribute("salesInvoices", salesInvoices);
-        return "sales-invoice-list";
+        model.addAttribute("listSalesInvoices", salesInvoices);
+        return "salesInvoice/salesInvoice_list";
     }
 
-    @GetMapping("/{salesInvoiceId}")
-    public String getSalesInvoiceById(@PathVariable int salesInvoiceId, Model model) {
+    @GetMapping("/my_salesInvoice")
+    public String getMySalesInvoices(Model model) {
+        // create model attribute to bind form data
+        SalesInvoice salesInvoice = new SalesInvoice();
+        model.addAttribute("salesInvoice", salesInvoice);
+        return "salesInvoice/new_salesInvoice";
+    }
+
+
+    @GetMapping("/my_salesInvoice/{id}")
+    public String getSalesInvoiceById(@PathVariable(value="id") int salesInvoiceId, Model model) {
         SalesInvoice salesInvoice = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
         model.addAttribute("salesInvoice", salesInvoice);
 
@@ -52,44 +60,44 @@ public class SalesInvoiceController {
         Customer customer = salesInvoiceService.getCustomerBySalesInvoiceId(salesInvoiceId);
         model.addAttribute("customer", customer);
 
-        return "sales_invoice_details";
+        return "salesInvoice/update_salesInvoice";
     }
 
-    @PostMapping
-    public String addSalesInvoice(@ModelAttribute SalesInvoice salesInvoice) {
-        salesInvoiceService.addSalesInvoice(salesInvoice);
-        return "redirect:/salesinvoice";
+    @PostMapping("/saveSalesInvoice")
+    public String saveSalesInvoice(@ModelAttribute SalesInvoice salesInvoice) {
+        salesInvoiceService.saveSalesInvoice(salesInvoice);
+        return "redirect:/salesInvoice";
     }
 
-    @PutMapping
+    @PutMapping("/saveSalesInvoice")
     public String updateSalesInvoice(@ModelAttribute SalesInvoice salesInvoice) {
         salesInvoiceService.updateSalesInvoice(salesInvoice);
-        return "redirect:/salesinvoice";
+        return "redirect:/salesInvoice";
     }
 
-    @DeleteMapping("/{salesInvoiceId}")
-    public String deleteSalesInvoice(@PathVariable int salesInvoiceId) {
+    @DeleteMapping("/deleteSalesInvoice/{id}")
+    public String deleteSalesInvoice(@PathVariable(value="id") int salesInvoiceId) {
         salesInvoiceService.deleteSalesInvoice(salesInvoiceId);
-        return "redirect:/salesinvoice";
+        return "redirect:/salesInvoice";
     }
 
-    @PostMapping("/{salesInvoiceId}/salesrep/{salesRepId}")
+    @PostMapping("/{salesInvoiceId}/salesRep/{salesRepId}")
     public String assignSalesRepToInvoice(@PathVariable int salesInvoiceId, @PathVariable int salesRepId) {
         salesInvoiceService.assignSalesRepToInvoice(salesInvoiceId, salesRepId);
-        return "redirect:/salesinvoice/" + salesInvoiceId;
+        return "redirect:/salesInvoice/" + salesInvoiceId;
     }
 
     @PostMapping("/{salesInvoiceId}/car/{carId}")
     public String assignCarToInvoice(@PathVariable int salesInvoiceId, @PathVariable int carId) {
         salesInvoiceService.assignCarToInvoice(salesInvoiceId, carId);
-        return "redirect:/salesinvoice/" + salesInvoiceId;
+        return "redirect:/salesInvoice/" + salesInvoiceId;
     }
 
     @PostMapping("/{salesInvoiceId}/customer/{customerId}")
     public String assignCustomerToInvoice(@PathVariable int salesInvoiceId, @PathVariable int customerId) {
         salesInvoiceService.assignCustomerToInvoice(salesInvoiceId, customerId);
-        return "redirect:/salesinvoice/" + salesInvoiceId;
+        return "redirect:/salesInvoice/" + salesInvoiceId;
     }
 
-    // Other mappings as needed
+
 }

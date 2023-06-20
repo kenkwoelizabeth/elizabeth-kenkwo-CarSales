@@ -17,7 +17,7 @@ public interface SalesInvoiceService {
 
     public SalesInvoice getSalesInvoiceById(int invoiceId);
 
-    public SalesInvoice addSalesInvoice(SalesInvoice salesInvoice);
+    public SalesInvoice saveSalesInvoice(SalesInvoice salesInvoice);
 
     public SalesInvoice updateSalesInvoice(SalesInvoice salesInvoice);
 

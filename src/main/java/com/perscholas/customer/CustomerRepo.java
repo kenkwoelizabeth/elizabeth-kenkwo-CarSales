@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
     Optional<Customer> findByCustomerId(int customerId);
+    List<Customer> findByCustomerName(String customerName) ;
 
-    List<Customer> findBySalesRepId(int salesRepId);
 
 }

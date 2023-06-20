@@ -1,0 +1,26 @@
+footer {
+    height: 4em;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #f5f5f5;
+    font-size: 1.2em;
+    pointer-events: none;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    height: 6em;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    margin-bottom: 2em;
+}

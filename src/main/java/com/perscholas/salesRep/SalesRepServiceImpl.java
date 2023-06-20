@@ -84,19 +84,7 @@ public class SalesRepServiceImpl implements SalesRepService {
         }
     }
 
-    public List<Car> getSalesRepCars(int salesRepId) {
-        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
-        if (salesRep != null) {
-            return carRepo.findBySalesRepId(salesRepId);
-        }
-        return Collections.emptyList();
-    }
 
-    public List<Customer> getSalesRepByCustomers(int salesRepId) {
-        SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
-        if (salesRep != null) {
-            return customerRepo.findBySalesRepId(salesRepId);
-        }
-        return Collections.emptyList();
-    }
+
+
 }

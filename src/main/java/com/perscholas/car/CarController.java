@@ -37,13 +37,19 @@ public class CarController {
     }
 
     @GetMapping("/")
+    public String home() {
+        return "car/home";
+    }
+
+
+    @GetMapping("/car")
     public String getAllCars(Model model) {
         model.addAttribute("listCars", carService.getAllCars());
         return "car/index";
     }
 
-    @GetMapping("/showNewCarForm")
-    public String showNewCarForm(Model model) {
+    @GetMapping("/my_cars")
+    public String getMyCars(Model model) {
         // create model attribute to bind form data
         Car car = new Car();
         model.addAttribute("car", car);
@@ -60,13 +66,13 @@ public class CarController {
 
         // save employee to database
         carService.saveCar(car);
-        return "redirect:/";
+        return "redirect:/car";
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") int carId, Model model) {
+    @GetMapping("/my_cars/{id}")
+    public String getCarsById(@PathVariable(value = "id") int carId, Model model) {
 
-        // get employee from the service
+        // get car from the service
         Car car = carService.getCarById(carId);
 
         // set employee as a model attribute to pre-populate the form
@@ -75,11 +81,11 @@ public class CarController {
     }
 
     @GetMapping("/deleteCar/{id}")
-    public String deleteEmployee(@PathVariable(value = "id") int carId) {
+    public String deleteCar(@PathVariable(value = "id") int carId) {
 
         // call delete employee method
         this.carService.deleteCarById(carId);
-        return "redirect:/";
+        return "redirect:/car";
     }
 
     @GetMapping("/login")
@@ -109,13 +115,13 @@ public class CarController {
     }
 
     @PostMapping("/car/{carId}/salesRep/{salesRepId}")
-    public String assignEmployeeToCar(@PathVariable int carId, @PathVariable int employeeId) {
-        carService.assignSalesRepToCar(carId, employeeId);
+    public String assignSalesRepToCar(@PathVariable int carId, @PathVariable int salesRepId) {
+        carService.assignSalesRepToCar(carId, salesRepId);
         return "redirect:/cars/" + carId;
     }
 
-    @PostMapping("/car/{carId}/employee/remove")
-    public String removeEmployeeFromCar(@PathVariable int carId) {
+    @PostMapping("/car/{carId}/salesRep/remove")
+    public String removeSalesRepFromCar(@PathVariable int carId) {
         carService.removeSalesRepFromCar(carId);
         return "redirect:/car/" + carId;
     }
