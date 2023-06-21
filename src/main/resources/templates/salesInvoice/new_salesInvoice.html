@@ -40,6 +40,7 @@
             <a class="nav-link text-white" href="salesInvoice">Sales Invoices</a>
           </li>
 
+
         </ul>
         <div>
           <a class="nav-link text-white" href="login">Login</a>
@@ -51,30 +52,27 @@
 
 
 
+
+
 <div class="container">
   <h1>Car Sales System</h1>
   <hr>
-  <h2>Update Customer</h2>
+  <h2>Save Sales Invoice</h2>
 
-  <form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
+  <form action="#" th:action="@{/saveSalesInvoice}" th:object="${salesInvoice}" method="POST">
+    <input type="text" th:field="*{salesInvoiceDate}" placeholder="Invoice Date" class="form-control mb-4 col-4" >
+    <div th:if="${#fields.hasErrors('salesInvoiceDate')}" th:errors="*{salesInvoiceDate}">Sales Invoice Date Error</div>
 
-    <!-- Add hidden form field to handle update -->
-    <input type="hidden" th:field="*{customerId}" />
-    <input type="text" th:field="*{customerName}" placeholder="customer Name" class="form-control mb-4 col-4">
-
-    <input type="text" th:field="*{customerContact}" placeholder="Customer Contact" class="form-control mb-4 col-4">
-
-    <input type="text" th:field="*{customerAddress}" placeholder="customer Address" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{salesInvoiceAmount}" placeholder="Invoice Amount" class="form-control mb-4 col-4">
 
 
-    <button type="submit" class="btn btn-info col-2"> Update Customer</button>
+    <button type="submit" class="btn btn-info col-2"> Save Invoice</button>
   </form>
 
   <hr>
-
-  <p><a class="btn btn-outline-success" href="/customer">
-    <i class="bi bi-arrow-left-square-fill"></i> Back to Customer List</a>
-  </p>
-</div>
+  <p><a class="btn btn-outline-success" href="/salesInvoice">
+    <i class="bi bi-arrow-left-square-fill"></i>Back to Invoice List</a>
+  </p> </div>
 </body>
+
 </html>

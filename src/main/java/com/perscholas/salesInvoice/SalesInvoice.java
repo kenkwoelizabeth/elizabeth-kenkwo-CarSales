@@ -16,10 +16,10 @@ public class SalesInvoice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //FIELDS
-    private int invoiceId;
-    private String invoiceDate;
+    private int salesInvoiceId;
+    private String salesInvoiceDate;
 
-    private double invoiceAmount;
+    private double salesInvoiceAmount;
     @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
     private Customer customer;
 
@@ -35,37 +35,36 @@ public class SalesInvoice implements Serializable {
     public SalesInvoice() {
     }
 
-    public SalesInvoice(int invoiceId, String invoiceDate, double invoiceAmount) {
-        this.invoiceId = invoiceId;
-        this.invoiceDate = invoiceDate;
-        this.invoiceAmount = invoiceAmount;
+    public SalesInvoice(int salesInvoiceId, String salesInvoiceDate, double salesInvoiceAmount) {
+        this.salesInvoiceId = salesInvoiceId;
+        this.salesInvoiceDate = salesInvoiceDate;
+        this.salesInvoiceAmount = salesInvoiceAmount;
 
     }
 
-    public int getInvoiceId() {
-        return invoiceId;
+    public int getSalesInvoiceId() {
+        return salesInvoiceId;
     }
 
-    public void setInvoiceId(int invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setSalesInvoiceId(int salesInvoiceId) {
+        this.salesInvoiceId = salesInvoiceId;
     }
 
-    public String getInvoiceDate() {
-        return invoiceDate;
+    public String getSalesInvoiceDate() {
+        return salesInvoiceDate;
     }
 
-    public void setInvoiceDate(String invoiceDate) {
-        this.invoiceDate = invoiceDate;
+    public void setSalesInvoiceDate(String salesInvoiceDate) {
+        this.salesInvoiceDate = salesInvoiceDate;
     }
 
-    public double getInvoiceAmount() {
-        return invoiceAmount;
+    public double getSalesInvoiceAmount() {
+        return salesInvoiceAmount;
     }
 
-    public void setInvoiceAmount(double invoiceAmount) {
-        this.invoiceAmount = invoiceAmount;
+    public void setSalesInvoiceAmount(double salesInvoiceAmount) {
+        this.salesInvoiceAmount = salesInvoiceAmount;
     }
-
 
     public Customer getCustomer() {
         return customer;

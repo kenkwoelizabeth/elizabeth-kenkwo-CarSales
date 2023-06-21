@@ -14,7 +14,7 @@ public interface SalesRepService {
 
     public SalesRep getSalesRepsById(int salesRepId);
 
-    public SalesRep addSalesRep(SalesRep salesRep);
+    public SalesRep saveSalesRep(SalesRep salesRep);
 
     public SalesRep updateSalesRep(SalesRep salesRep);
 

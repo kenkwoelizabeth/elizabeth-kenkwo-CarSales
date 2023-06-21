@@ -88,17 +88,6 @@ public class CarController {
         return "redirect:/car";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request) {
-        HttpSession httpSession = request.getSession();
-        httpSession.invalidate();
-        return "redirect:/";
-    }
 
     @GetMapping("/car/{id}/invoices")
     public String getCarInvoices(@PathVariable(value = "id") int carId, Model model) {
@@ -110,7 +99,7 @@ public class CarController {
     public String addSalesInvoiceToCar(@PathVariable int carId, @ModelAttribute SalesInvoice salesInvoice) {
         Car existingCar = carService.getCarById(carId);
         salesInvoice.setCar(existingCar);
-        salesInvoiceService.addSalesInvoice(salesInvoice);
+        salesInvoiceService.saveSalesInvoice(salesInvoice);
         return "redirect:/car/" + carId;
     }
 

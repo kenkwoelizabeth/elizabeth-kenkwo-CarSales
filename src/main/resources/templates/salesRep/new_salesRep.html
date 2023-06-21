@@ -52,34 +52,29 @@
 
 
 
+
+
 <div class="container">
     <h1>Car Sales System</h1>
     <hr>
-    <h2>Update Car</h2>
+    <h2>Save Sales Representative</h2>
 
-    <form action="#" th:action="@{/saveCar}" th:object="${car}" method="POST">
+    <form action="#" th:action="@{/saveSalesRep}" th:object="${salesRep}" method="POST">
+        <input type="text" th:field="*{salesRepName}" placeholder="salesRep Name" class="form-control mb-4 col-4" >
+        <div th:if="${#fields.hasErrors('salesRepName')}" th:errors="*{salesRepName}">Sales Rep Name Error</div>
 
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{carId}" />
-        <input type="text" th:field="*{carMake}" placeholder="Car Make" class="form-control mb-4 col-4">
-
-        <input type="text" th:field="*{carModel}" placeholder="Car Model" class="form-control mb-4 col-4">
-
-        <input type="text" th:field="*{carColour}" placeholder="Car Colour" class="form-control mb-4 col-4">
-
-        <input type="text" th:field="*{carYear}" placeholder="Car Year" class="form-control mb-4 col-4">
-
-        <input type="text" th:field="*{carPrice}" placeholder="Car Price" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{salesRepContact}" placeholder="SalesRep Contact" class="form-control mb-4 col-4">
 
 
-        <button type="submit" class="btn btn-info col-2"> Update Car</button>
+
+
+        <button type="submit" class="btn btn-info col-2"> Save Sales Representative</button>
     </form>
 
     <hr>
-
-   <p><a class="btn btn-outline-success" href="/car">
-        <i class="bi bi-arrow-left-square-fill"></i> Back to Car List</a>
-    </p>
-</div>
+    <p><a class="btn btn-outline-success" href="/salesRep">
+        <i class="bi bi-arrow-left-square-fill"></i>Back to Sales Representative List</a>
+    </p> </div>
 </body>
+
 </html>

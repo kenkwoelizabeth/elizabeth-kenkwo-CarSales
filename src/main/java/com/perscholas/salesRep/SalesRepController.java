@@ -2,6 +2,7 @@ package com.perscholas.salesRep;
 
 
 import com.perscholas.car.Car;
+import com.perscholas.customer.Customer;
 import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/salesrep")
 public class SalesRepController {
     @Autowired
     private SalesRepService salesRepService;
@@ -19,51 +19,41 @@ public class SalesRepController {
     public SalesRepController() {
     }
 
-    @GetMapping
+    @GetMapping("/salesRep")
     public String getAllSalesReps(Model model) {
         List<SalesRep> salesReps = salesRepService.getAllSalesReps();
-        model.addAttribute("salesReps", salesReps);
-        return "salesReps";
+        model.addAttribute("listSalesReps", salesReps);
+        return "salesRep/salesRep_list";
     }
 
-    @GetMapping("/{id}")
-    public String getSalesRepById(@PathVariable("id") int salesRepId, Model model) {
+
+    @GetMapping("/my_salesReps")
+    public String getMySalesRep(Model model) {
+        // create model attribute to bind form data
+        SalesRep salesRep = new SalesRep();
+        model.addAttribute("salesRep", salesRep);
+        return "salesRep/new_salesRep";
+    }
+    @GetMapping("/my_salesReps/{id}")
+    public String getSalesRepById(@PathVariable(value="id") int salesRepId, Model model) {
         SalesRep salesRep = salesRepService.getSalesRepsById(salesRepId);
-        if (salesRep != null) {
             model.addAttribute("salesRep", salesRep);
-            return "salesrep";
+            return "salesRep/update_salesRep";
         }
-        return "SalesRep not found";
+
+
+    @PostMapping ("/saveSalesRep")
+    public String saveSalesRep(@ModelAttribute SalesRep salesRep) {
+        salesRepService.saveSalesRep(salesRep);
+        return "redirect:/salesRep";
     }
 
-    @PostMapping
-    public String addSalesRep(@ModelAttribute("salesRep") SalesRep salesRep) {
-        SalesRep createdSalesRep = salesRepService.addSalesRep(salesRep);
-        return "redirect:/salesreps";
-    }
 
-    @PostMapping("/{id}")
-    public String updateSalesRep(
-            @PathVariable("id") int salesRepId,
-            @ModelAttribute("salesRep") SalesRep salesRep
-    ) {
-        SalesRep existingSalesRep = salesRepService.getSalesRepsById(salesRepId);
-        if (existingSalesRep != null) {
-            salesRep.setSalesRepId(salesRepId);
-            SalesRep updatedSalesRep = salesRepService.updateSalesRep(salesRep);
-            return "redirect:/salesreps/" + salesRepId;
-        }
-        return "notfound";
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteSalesRep(@PathVariable("id") int salesRepId) {
-        SalesRep existingSalesRep = salesRepService.getSalesRepsById(salesRepId);
-        if (existingSalesRep != null) {
+    @GetMapping("/deleteSalesRep/{id}")
+    public String deleteSalesRep(@PathVariable(value="id") int salesRepId) {
             salesRepService.deleteSalesRep(salesRepId);
-            return "redirect:/salesreps";
-        }
-        return "notfound";
+            return "redirect:/salesRep";
+
     }
 
     @GetMapping("/{id}/salesinvoices")

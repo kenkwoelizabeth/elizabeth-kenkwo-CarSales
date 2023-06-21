@@ -75,7 +75,7 @@ public class SalesInvoiceController {
         return "redirect:/salesInvoice";
     }
 
-    @DeleteMapping("/deleteSalesInvoice/{id}")
+    @GetMapping("/deleteSalesInvoice/{id}")
     public String deleteSalesInvoice(@PathVariable(value="id") int salesInvoiceId) {
         salesInvoiceService.deleteSalesInvoice(salesInvoiceId);
         return "redirect:/salesInvoice";

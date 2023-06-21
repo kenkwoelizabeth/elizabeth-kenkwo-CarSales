@@ -15,13 +15,13 @@ public interface SalesInvoiceService {
 
     public List<SalesInvoice> getAllSalesInvoices();
 
-    public SalesInvoice getSalesInvoiceById(int invoiceId);
+    public SalesInvoice getSalesInvoiceById(int salesInvoiceId);
 
     public SalesInvoice saveSalesInvoice(SalesInvoice salesInvoice);
 
     public SalesInvoice updateSalesInvoice(SalesInvoice salesInvoice);
 
-    public void deleteSalesInvoice(int invoiceId);
+    public void deleteSalesInvoice(int salesInvoiceId);
 
     public SalesRep getSalesRepBySalesInvoiceId(int salesInvoiceId);
 

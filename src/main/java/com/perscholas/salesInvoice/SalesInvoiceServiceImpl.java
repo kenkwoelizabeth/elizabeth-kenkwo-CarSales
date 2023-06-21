@@ -34,8 +34,8 @@ public class SalesInvoiceServiceImpl implements SalesInvoiceService {
         return salesInvoiceRepo.findAll();
     }
 
-    public SalesInvoice getSalesInvoiceById(int invoiceId) {
-        Optional<SalesInvoice> optionalInvoice = salesInvoiceRepo.findById(invoiceId);
+    public SalesInvoice getSalesInvoiceById(int salesInvoiceId) {
+        Optional<SalesInvoice> optionalInvoice = salesInvoiceRepo.findById(salesInvoiceId);
         return optionalInvoice.orElse(null);
     }
 
@@ -49,8 +49,8 @@ public class SalesInvoiceServiceImpl implements SalesInvoiceService {
     }
 
 
-    public void deleteSalesInvoice(int invoiceId) {
-        salesInvoiceRepo.deleteById(invoiceId);
+    public void deleteSalesInvoice(int salesInvoiceId) {
+        salesInvoiceRepo.deleteById(salesInvoiceId);
     }
 
 

@@ -43,7 +43,7 @@ public class SalesRepServiceImpl implements SalesRepService {
     }
 
 
-    public SalesRep addSalesRep(SalesRep salesRep) {
+    public SalesRep saveSalesRep(SalesRep salesRep) {
         return salesRepRepo.save(salesRep);
     }
 
@@ -66,7 +66,7 @@ public class SalesRepServiceImpl implements SalesRepService {
 
     public void addSalesInvoiceToSalesRep(int salesRepId, SalesInvoice salesInvoice) {
         SalesRep salesRep = salesRepRepo.findById(salesRepId).orElse(null);
-        SalesInvoice salesInvoice1 = salesInvoiceRepo.findById(salesInvoice.getInvoiceId()).orElse(null);
+        SalesInvoice salesInvoice1 = salesInvoiceRepo.findById(salesInvoice.getSalesInvoiceId()).orElse(null);
         if (salesRep != null && salesInvoice != null) {
             salesRep.getSalesInvoice().add(salesInvoice);
             salesInvoice.setSalesRep(salesRep);
