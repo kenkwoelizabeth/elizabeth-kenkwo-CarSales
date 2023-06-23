@@ -11,5 +11,4 @@ public interface CarRepo extends JpaRepository<Car, Integer> {
     Car findByCarMake(String carMake);
 
 
-
 }

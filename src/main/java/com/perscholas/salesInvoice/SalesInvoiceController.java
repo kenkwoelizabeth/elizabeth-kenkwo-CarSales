@@ -47,7 +47,7 @@ public class SalesInvoiceController {
 
 
     @GetMapping("/my_salesInvoice/{id}")
-    public String getSalesInvoiceById(@PathVariable(value="id") int salesInvoiceId, Model model) {
+    public String getSalesInvoicesById(@PathVariable(value = "id") int salesInvoiceId, Model model) {
         SalesInvoice salesInvoice = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
         model.addAttribute("salesInvoice", salesInvoice);
 
@@ -76,7 +76,7 @@ public class SalesInvoiceController {
     }
 
     @GetMapping("/deleteSalesInvoice/{id}")
-    public String deleteSalesInvoice(@PathVariable(value="id") int salesInvoiceId) {
+    public String deleteSalesInvoice(@PathVariable(value = "id") int salesInvoiceId) {
         salesInvoiceService.deleteSalesInvoice(salesInvoiceId);
         return "redirect:/salesInvoice";
     }

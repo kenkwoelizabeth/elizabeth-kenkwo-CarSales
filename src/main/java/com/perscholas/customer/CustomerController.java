@@ -31,7 +31,7 @@ public class CustomerController {
     }
 
     @GetMapping("/my_customers")
-    public String getMyCars(Model model) {
+    public String getMyCustomers(Model model) {
         // create model attribute to bind form data
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     @GetMapping("/my_customers/{id}")
-    public String getCustomerById(@PathVariable(value="id") int customerId, Model model) {
+    public String getCustomersById(@PathVariable(value = "id") int customerId, Model model) {
         Customer customer = customerService.getCustomerById(customerId);
         model.addAttribute("customer", customer);
         return "customer/update_customer";
@@ -54,7 +54,7 @@ public class CustomerController {
 
 
     @GetMapping("/deleteCustomer/{id}")
-    public String deleteCustomer(@PathVariable(value="id") int customerId) {
+    public String deleteCustomer(@PathVariable(value = "id") int customerId) {
         customerService.deleteCustomer(customerId);
         return "redirect:/customer";
     }

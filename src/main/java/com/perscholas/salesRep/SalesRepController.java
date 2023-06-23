@@ -28,21 +28,22 @@ public class SalesRepController {
 
 
     @GetMapping("/my_salesReps")
-    public String getMySalesRep(Model model) {
+    public String getMySalesReps(Model model) {
         // create model attribute to bind form data
         SalesRep salesRep = new SalesRep();
         model.addAttribute("salesRep", salesRep);
         return "salesRep/new_salesRep";
     }
+
     @GetMapping("/my_salesReps/{id}")
-    public String getSalesRepById(@PathVariable(value="id") int salesRepId, Model model) {
+    public String getSalesRepsById(@PathVariable(value = "id") int salesRepId, Model model) {
         SalesRep salesRep = salesRepService.getSalesRepsById(salesRepId);
-            model.addAttribute("salesRep", salesRep);
-            return "salesRep/update_salesRep";
-        }
+        model.addAttribute("salesRep", salesRep);
+        return "salesRep/update_salesRep";
+    }
 
 
-    @PostMapping ("/saveSalesRep")
+    @PostMapping("/saveSalesRep")
     public String saveSalesRep(@ModelAttribute SalesRep salesRep) {
         salesRepService.saveSalesRep(salesRep);
         return "redirect:/salesRep";
@@ -50,9 +51,9 @@ public class SalesRepController {
 
 
     @GetMapping("/deleteSalesRep/{id}")
-    public String deleteSalesRep(@PathVariable(value="id") int salesRepId) {
-            salesRepService.deleteSalesRep(salesRepId);
-            return "redirect:/salesRep";
+    public String deleteSalesRep(@PathVariable(value = "id") int salesRepId) {
+        salesRepService.deleteSalesRep(salesRepId);
+        return "redirect:/salesRep";
 
     }
 
@@ -81,7 +82,6 @@ public class SalesRepController {
         salesRepService.removeSalesInvoiceFromSalesRep(salesRepId, salesInvoiceId);
         return "redirect:/salesreps/" + salesRepId + "/salesinvoices";
     }
-
 
 
 }

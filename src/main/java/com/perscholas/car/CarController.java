@@ -1,7 +1,6 @@
 package com.perscholas.car;
 
 
-
 import com.perscholas.salesInvoice.SalesInvoice;
 import com.perscholas.salesInvoice.SalesInvoiceService;
 import com.perscholas.salesRep.SalesRepService;
@@ -18,7 +17,6 @@ import java.util.List;
 
 @Controller
 public class CarController {
-
 
 
     private CarService carService;
