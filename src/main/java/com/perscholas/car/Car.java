@@ -40,8 +40,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(int carId, String carMake, String carModel, String carColour, String carYear, double carPrice) {
-        this.carId = carId;
+    public Car( String carMake, String carModel, String carColour, String carYear, double carPrice) {
+
         this.carMake = carMake;
         this.carModel = carModel;
         this.carColour = carColour;
