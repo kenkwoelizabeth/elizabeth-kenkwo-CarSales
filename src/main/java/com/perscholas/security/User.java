@@ -2,6 +2,7 @@ package com.perscholas.security;
 
 import javax.persistence.*;
 import java.util.Collection;
+
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {

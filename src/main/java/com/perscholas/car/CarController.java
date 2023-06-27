@@ -34,9 +34,10 @@ public class CarController {
         this.salesRepService = salesRepService;
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "car/home";
+    @GetMapping("/backEndCover")
+    public String backEndCover() {
+
+        return "car/backEndCover";
     }
 
 

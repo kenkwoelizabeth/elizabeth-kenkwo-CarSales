@@ -1,5 +1,6 @@
 package com.perscholas.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
 
+    @Autowired
+  UserService userService;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -15,7 +18,10 @@ public class MainController {
     }
 
     @GetMapping("/user")
-    public String userIndex() {
+    public String userIndex(){
+
+
         return "user/index";
     }
 }
+

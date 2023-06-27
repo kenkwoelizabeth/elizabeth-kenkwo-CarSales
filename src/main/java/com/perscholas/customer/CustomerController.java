@@ -73,5 +73,8 @@ public class CustomerController {
         salesInvoiceService.saveSalesInvoice(salesInvoice);
         return "redirect:/customers/" + customerId;
     }
+
+    // front end controllers//
+
 }
 
