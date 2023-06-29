@@ -29,7 +29,7 @@ class CarServiceImplTest2 {
 
     @BeforeEach
     void setUp() {
-        Car car= new Car();
+        Car car = new Car();
 
         car.setCarMake("Toyota");
         car.setCarModel("Camry");
@@ -45,7 +45,7 @@ class CarServiceImplTest2 {
         List<Car> allCars = carService.getAllCars();
         int beforeAddingMoreCars = allCars.size();
 
-        Car car2= new Car();
+        Car car2 = new Car();
 
         car2.setCarMake("Toyota");
         car2.setCarModel("Camry");
@@ -59,15 +59,14 @@ class CarServiceImplTest2 {
     }
 
     @Test
-    void saveCar_with_valid_data_should_save_it_successfully(){
+    void saveCar_with_valid_data_should_save_it_successfully() {
         double random = Math.random();
 
         String randomCarMake = "Toyota" + random;
-        String randomCarColor = "Red" + random ;
-        Car car = new Car(randomCarMake,"Camry", randomCarColor, " 2013",50000.00 );
+        String randomCarColor = "Red" + random;
+        Car car = new Car(randomCarMake, "Camry", randomCarColor, " 2013", 50000.00);
 
         carService.saveCar(car);
-
 
 
         List<Car> allCars = carService.getAllCars();

@@ -1,120 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--link boostrap   -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!--font Awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-   />
- <!--import css file-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    />
+    <!--import css file-->
 
- <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
- 
     <title>Capstone Website</title>
 
-   
+
 </head>
 <body>
 
-  
+
 <!--------------Navbar Section Start here-------------------->
+
 <nav class="navbar navbar-expand-sm fixed-top">
-    <a href="index.html" class="navbar-brand"><span>L</span>izzy Autos</a>
-<div>
-<ul class="navbar-nav">
-    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-    <li class="nav-item"><a href="" class="nav-link">About Us &#x25BE;</a>
-            <ul class="sub-menu">
-<li><a href="aboutus.html" class="nav-link">About Us</a></li>
-<li><a href="careers.html" class="nav-link">Careers</a></li>
-<li><a href="financing.html" class="nav-link">Financing</a></li>
-<li><a href="staffs.html" class="nav-link">Our Staffs</a></li>
+    <a href=" " class="navbar-brand"><span>L</span>izzy Autos</a>
+    <div>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="/aboutUs" class="nav-link">About Us &#x25BE;</a>
+                <ul class="sub-menu">
+                    <li><a href="/aboutUs" class="nav-link">About Us</a></li>
+                    <li><a href="/careers" class="nav-link">Careers</a></li>
+                    <li><a href="/financing" class="nav-link">Financing</a></li>
+                    <li><a href="/staffs" class="nav-link">Our Staffs</a></li>
 
-    </ul>
-    </li>
-    <li class="nav-item"><a href="contactus.html" class="nav-link">Contact</a></li>
-    <li class="nav-item"><a href="cars.html" class="nav-link">Cars</a></li>
-</ul>
-</div>
-
-<div>
-    <ul class="navbar-nav">
-        <li class="nav-item"><a href="registration.html" class="nav-link btn">Login</a></li>
-    </ul>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="/contactUs" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="/frontendCars" class="nav-link">Cars</a></li>
+        </ul>
     </div>
+
+    <!--   <div>
+           <ul class="navbar-nav">
+               <li class="nav-item"><a href="/login" class="nav-link btn">Login</a></li>
+           </ul>
+       </div>-->
 </nav>
 
-<div class ="container">
+<div class="container">
     <div class="form-box">
         <table>
             <h1>Meet Our Wonderful Staff</h1>
             <thead>
-              <tr>
+            <tr>
                 <th class="primary" scope="col">Name</th>
                 <th scope="col">Position</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Email</th>
-              </tr>
+            </tr>
             </thead>
             <tbody>
-              <tr>
+            <tr>
                 <th scope="row">Kathleen Henderson</th>
                 <td>Office Assiociate</td>
                 <td>913758435</td>
                 <td>khenderson@gmail.com</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
                 <th scope="row">John Jacob</th>
                 <td>Sales Representative</td>
                 <td>814567890</td>
                 <td>jjacob@gmail.com</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
                 <th scope="row">Jenny Tutone</th>
                 <td>Supervisor</td>
                 <td>86753090</td>
                 <td>jtutone@gmail.com</td>
-              </tr>
+            </tr>
             </tbody>
-          </table>
-</div>
+        </table>
+    </div>
 </div>
 
 
 <!--------------Footer Section Starts here-------------------->
 <footer id="footer">
-  <class="text-center p-3"> LizzyAutos@2023</class>
-  </footer>
-  <!--------------Footer Section Ends here-------------------->
-  
+    <span class="text-center p-3"> LizzyAutos@2023  </span>
+</footer>
+<!--------------Footer Section Ends here-------------------->
 
-  <!--------------Footer Scroll bar Section Starts here-------------------->
-  <script>
+
+<!--------------Footer Scroll bar Section Starts here-------------------->
+<script>
 // for the scroll effect
 (document).scroll(function(){
   $(".navbar").toggleClass("scrolled", $(this).scrollTop() > 
   $(".navbar").height());   
 })
-  </script>
-  
-   <!--------------Footer Scroll bar Section Ends here-------------------->
-  <!--custom script-->
-  
-  <!--link for javascript cdn-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  
-  
-  <script src="/js/script.js"></script>
-  </body>
-  </html>
+
+
+</script>
+
+<!--------------Footer Scroll bar Section Ends here-------------------->
+<!--custom script-->
+
+<!--link for javascript cdn-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,17 +1,16 @@
 package com.perscholas;
 
 import com.perscholas.car.CarService;
-import com.perscholas.security.SecurityConfiguration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@SpringBootApplication( exclude = {SecurityAutoConfiguration.class} )
+@SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan
 public class ElizabethKenkwoCarSalesApplication {

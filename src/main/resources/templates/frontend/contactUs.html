@@ -15,6 +15,7 @@
     />
     <!--import css file-->
     <link rel="stylesheet" href="./css/style.css">
+    <script src="/js/script.js"></script>
     <title>Capstone Website</title>
 
 
@@ -44,41 +45,61 @@
     </div>
 
     <!--   <div>
-           <ul class="navbar-nav">
-               <li class="nav-item"><a href="/login" class="nav-link btn">Login</a></li>
-           </ul>
-       </div>-->
+          <ul class="navbar-nav">
+              <li class="nav-item"><a href="/login" class="nav-link btn">Login</a></li>
+          </ul>
+      </div>-->
 </nav>
+
+<!--------------Contact Page Starts here-------------------->
 
 <section>
     <div class="container contactus_main_page">
         <div class="row">
             <div class="col-sm-5">
                 <img src="images/car.jpg" class="img-fluid" alt="">
-                <h6>You dont need to worry about financing because we got you!!</h6>
+                <h6>How Can We Help You</h6>
             </div>
             <div class="offset-sm-2 col-sm-5">
-                <h1>Financing for every situation</h1>
-                <p>We make the experience of applying for a car loan fast and stress-free. You don’t even have to go to
-                    our shop. You can send us your application online by clicking Apply Online.
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-weight-bold">Name</label>
+                        <input id="name" type="text" class="form-weight-bold form-control"
+                               placeholder="Enter your Name">
+                    </div>
 
-                    We specialize in getting customers the financing they need. We can help you build or re-build your
-                    credit if you need it! We have a team that is well suited to help you find the car you are looking
-                    for and get you the financing you need.
+                    <div class="form-group">
+                        <label for="email" class="form-weight-bold">Email</label>
+                        <input id="email" type="text" class="form-weight-bold form-control"
+                               placeholder="Enter your Email">
+                    </div>
 
-                    Contact us today to let us help you find the vehicle financing you are looking for!</p>
+
+                    <div class="form-group">
+                        <label for="Phone number" class="form-weight-bold">Phone Number</label>
+                        <input id="Phone number" type="text" class="form-weight-bold form-control"
+                               placeholder="Enter your Phone Number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question" class="form-weight-bold">How can We Help You</label>
+                        <textarea id="question" rows="6" class="form-weight-bold form-control"
+                                  placeholder="How can We Help You"></textarea>
+                    </div>
+                    <button class="btn">Submit</button>
+                </form>
             </div>
         </div>
-
     </div>
 </section>
+<!--------------Contact Section Ends here-------------------->
+
 
 <!--------------Footer Section Starts here-------------------->
 <footer id="footer">
     <span class="text-center p-3"> LizzyAutos@2023  </span>
 </footer>
 <!--------------Footer Section Ends here-------------------->
-
 <!--------------Footer Scroll bar Section Starts here-------------------->
 <script>
     // for the scroll effect
@@ -91,6 +112,7 @@
 </script>
 
 <!--------------Footer Scroll bar Section Ends here-------------------->
+
 <!--custom script-->
 
 <!--link for javascript cdn-->

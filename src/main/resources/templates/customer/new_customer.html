@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/css/home.css" type="text/css" rel="stylesheet" />
+    <link href="/css/home.css" type="text/css" rel="stylesheet"/>
 
     <title>Lizzy Autos</title>
 </head>
@@ -18,7 +18,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#">Lizzy Autos</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,7 +43,7 @@
 
 
                 </ul>
-                <div >
+                <div>
                     <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Logout </a>
                 </div>
             </div>
@@ -51,22 +52,18 @@
 </header>
 
 
-
-
-
 <div class="container">
     <h1>Car Sales System</h1>
     <hr>
     <h2>Save Customer</h2>
 
     <form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
-        <input type="text" th:field="*{customerName}" placeholder="Customer Name" class="form-control mb-4 col-4" >
+        <input type="text" th:field="*{customerName}" placeholder="Customer Name" class="form-control mb-4 col-4">
         <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Customer Name Error</div>
 
         <input type="text" th:field="*{customerContact}" placeholder="customer Contact" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{customerAddress}" placeholder="Customer Address" class="form-control mb-4 col-4">
-
 
 
         <button type="submit" class="btn btn-info col-2"> Save Customer</button>
@@ -75,7 +72,7 @@
     <hr>
     <p><a class="btn btn-outline-success" href="/customer">
         <i class="bi bi-arrow-left-square-fill"></i>Back to Customer List</a>
-    </p> </div>
+    </p></div>
 </body>
 
 </html>

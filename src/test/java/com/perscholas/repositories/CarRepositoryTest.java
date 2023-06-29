@@ -1,7 +1,6 @@
 package com.perscholas.repositories;
 
 
-
 import com.perscholas.car.Car;
 import com.perscholas.car.CarRepo;
 import org.assertj.core.api.Assertions;
@@ -18,7 +17,6 @@ class CarRepositoryTest {
 
     @BeforeEach
     void setUp() {
-
 
 
         Car car = new Car();

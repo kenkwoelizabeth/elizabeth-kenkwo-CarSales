@@ -25,12 +25,11 @@ class CarServiceImplTest {
     void setUp() {
 
 
-
         Car car1
-                = new Car("Toyota","Camry", "Red","2013", 50000.00);
+                = new Car("Toyota", "Camry", "Red", "2013", 50000.00);
         carService.saveCar(car1);
         Car car2
-                = new Car("Toyota2","Camry2", "Red","2015", 55000.00);
+                = new Car("Toyota2", "Camry2", "Red", "2015", 55000.00);
         carService.saveCar(car2);
     }
 
@@ -41,7 +40,7 @@ class CarServiceImplTest {
         int beforeAddingMoreCars = allCars.size();
 
         Car carSaved
-                = new Car("Toyota2","Camry2", "Red","2015", 55000.00);
+                = new Car("Toyota2", "Camry2", "Red", "2015", 55000.00);
         carService.saveCar(carSaved);
         int afterAddingMoreCars = carService.getAllCars().size();
 
@@ -52,8 +51,8 @@ class CarServiceImplTest {
     void saveCar_with_valid_data_should_save_it_successfully() {
         double random = Math.random();
         String randomCarMake = "Toyota" + random;
-        String randomCarColor = "Red" + random ;
-        Car car = new Car(randomCarMake,"Camry", randomCarColor, " 2013",50000.00 );
+        String randomCarColor = "Red" + random;
+        Car car = new Car(randomCarMake, "Camry", randomCarColor, " 2013", 50000.00);
 
         carService.saveCar(car);
 
@@ -72,7 +71,8 @@ class CarServiceImplTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2}) // six numbers
+    @ValueSource(ints = {1, 2})
+        // six numbers
     void getCarById_with_parameterized_data(int carId) {
         Car car = carService.getCarById(carId);
         Assertions.assertThat(car.getCarId()).isEqualTo(carId);
