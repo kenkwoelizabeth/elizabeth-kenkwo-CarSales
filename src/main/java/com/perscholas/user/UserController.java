@@ -1,15 +1,22 @@
 package com.perscholas.user;
 
+import com.perscholas.security.Role;
+import com.perscholas.security.User;
+import com.perscholas.security.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.validation.Valid;
 import java.util.List;
 
-@RestController
-@RequestMapping("api/v1")
+@Controller
 public class UserController {
-
     private UserService userService;
 
     @Autowired
@@ -17,36 +24,66 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("users")
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    @GetMapping("/users")
+    public String getAll(Model model) {
+        model.addAttribute("listUsers", userService.getAllUsers());
+        List<User> allUsers = userService.getAllUsers();
+        for (User user: allUsers ) {
+            for (Role role: user.getRoleSet() ){
+                System.out.println(" print out here" + role.getName() );
+
+            }
+
+        }
+
+        return "users";
     }
 
-    @GetMapping("users/{username}")
-    public ResponseEntity<User> getUser(@PathVariable("username") String username) {
-        User existingUser = userService.getUser(username);
-        return ResponseEntity.ok(existingUser);
 
+
+    @PostMapping("/saveUser/{id}")
+    public String registerUserAccount(@PathVariable(value = "id") long id,
+                                      @ModelAttribute("user") @Valid User user,
+                                      BindingResult result){
+
+        Logger logger = LoggerFactory.getLogger(UserController.class);
+
+//        User existing = userService.findByEmail(userDto.getEmail());
+
+        if (result.hasErrors()){
+            return "redirect:/users";
+        }
+
+        userService.updateUser(user);
+
+        logger.info("User with email " + user.getEmail() + " has been updated");
+
+        return "redirect:/users";
     }
 
-    @GetMapping("users")
-    public List<User> getAllUsers() {
-        return userService.getUsers();
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+        // get user from the service
+        User user = userService.getUserById(id);
+
+        // set user as a model attribute to pre-populate the form
+        model.addAttribute("user", user);
+        return "update_user";
     }
 
-    @PutMapping("users/{username}")
-    public ResponseEntity<User> updateUser(
-            @PathVariable("username") String username,
-            @RequestBody User user) {
-        User existingUser = userService.updateUser(user);
-        return ResponseEntity.ok(existingUser);
+    @GetMapping("/deleteUser/{id}")
+    public String delete(@PathVariable(value = "id") long id) {
+        // call delete user method
+        this.userService.deleteUserById(id);
+        return "redirect:/users";
     }
 
-    @DeleteMapping("users/{username}")
-    public ResponseEntity<String> deleteUser(
-            @PathVariable("username") String username) {
-        userService.deleteUser(username);
-        return ResponseEntity.ok("User deleted");
+    @GetMapping("/updateRole/{id}")
+    public String updateRole(@PathVariable(value = "id") long id) {
+        // call delete user method
+        this.userService.updateRole(id);
+        return "redirect:/users";
     }
+
 
 }

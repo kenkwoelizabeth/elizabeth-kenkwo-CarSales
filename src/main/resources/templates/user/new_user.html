@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -42,9 +41,9 @@
                         <a class="nav-link text-white" href="salesInvoice">Sales Invoices</a>
                     </li>
 
+
                     <li class="nav-item">
-                        <a class="nav-link text-white"  href="users.html"
-                           th:href="@{/users}">Users</a>
+                        <a class="nav-link text-white" href="users">Users</a>
                     </li>
                 </ul>
                 <div>
@@ -59,26 +58,24 @@
 <div class="container">
     <h1>Car Sales System</h1>
     <hr>
-    <h2>Update Invoice</h2>
+    <h2>Users</h2>
 
-    <form action="#" th:action="@{/saveSalesInvoice}" th:object="${salesInvoice}" method="POST">
+    <form action="#" th:action="@{/saveUser}" th:object="${users}" method="POST">
+        <input type="text" th:field="*{firstName}" placeholder="User FirstName" class="form-control mb-4 col-4">
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">User FirstName Error</div>
 
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{salesInvoiceId}"/>
-        <input type="text" th:field="*{salesInvoiceDate}" placeholder="Invoice Date" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{lastName}" placeholder="User LastName" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{salesInvoiceAmount}" placeholder="Invoice Amount"
-               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="User Email" class="form-control mb-4 col-4">
 
-
-        <button type="submit" class="btn btn-info col-2"> Update Invoice</button>
+        <input type="text" th:field="*{role}" placeholder="User Role" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2"> Save User</button>
     </form>
 
     <hr>
-
-    <p><a class="btn btn-outline-success" href="/salesInvoice">
-        <i class="bi bi-arrow-left-square-fill"></i> Back to Invoice List</a>
-    </p>
-</div>
+    <p><a class="btn btn-outline-success" href="/users">
+        <i class="bi bi-arrow-left-square-fill"></i>Back to User List</a>
+    </p></div>
 </body>
+
 </html>

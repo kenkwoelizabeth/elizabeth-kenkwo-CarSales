@@ -1,6 +1,5 @@
 package com.perscholas.customer;
 
-import com.perscholas.car.Car;
 import com.perscholas.salesInvoice.SalesInvoice;
 import com.perscholas.salesInvoice.SalesInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import java.util.List;
 @Controller
 public class CustomerController {
 
+
+    // fields and injecting the dependency
     @Autowired
     private CustomerService customerService;
 
@@ -23,6 +24,8 @@ public class CustomerController {
     public CustomerController() {
     }
 
+
+    // customer page for CRUD
     @GetMapping("/customer")
     public String getAllCustomers(Model model) {
         List<Customer> customers = customerService.getAllCustomers();

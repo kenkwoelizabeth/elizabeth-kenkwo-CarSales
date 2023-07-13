@@ -1,8 +1,6 @@
 package com.perscholas.salesRep;
 
 
-import com.perscholas.car.Car;
-import com.perscholas.customer.Customer;
 import com.perscholas.salesInvoice.SalesInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -10,15 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class CarController {
 
-
+// fields
     private CarService carService;
 
 
@@ -27,6 +27,8 @@ public class CarController {
 
     private SalesRepService salesRepService;
 
+
+    // injecting the dependency
     @Autowired
     public CarController(CarService carService, SalesInvoiceService salesInvoiceService, SalesRepService salesRepService) {
         this.carService = carService;
@@ -34,13 +36,15 @@ public class CarController {
         this.salesRepService = salesRepService;
     }
 
+
+    // admin backend cover page
     @GetMapping("/backEndCover")
     public String backEndCover() {
 
         return "car/backEndCover";
     }
 
-
+// car page
     @GetMapping("/car")
     public String getAllCars(Model model) {
         model.addAttribute("listCars", carService.getAllCars());
@@ -112,6 +116,28 @@ public class CarController {
     public String removeSalesRepFromCar(@PathVariable int carId) {
         carService.removeSalesRepFromCar(carId);
         return "redirect:/car/" + carId;
+    }
+
+
+
+
+    // receipt page
+    @GetMapping("/car/purchase/{id}")
+    public String purchaseCar(Model model, @PathVariable int id) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String timeStamp = currentDateTime.format(formatter);
+
+        Car car1 = carService.getCarById(id);
+        DecimalFormat decimalFormat = new DecimalFormat("#########0.##");
+        double taxes = Double.parseDouble(decimalFormat.format(car1.getCarPrice() * 0.13));
+        car1.setCarPrice(Double.parseDouble(decimalFormat.format(car1.getCarPrice() + taxes)));
+
+        model.addAttribute("car", car1);
+        model.addAttribute("taxes", taxes);
+        model.addAttribute("timestamp", timeStamp);
+       // carService.deleteCarById(id);
+        return "frontend/receipt";
     }
 
 }

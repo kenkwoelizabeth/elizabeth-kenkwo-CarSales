@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">Lizzy Autos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="/backEndCover">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="car">Cars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="customer">Customers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="salesRep">Sales Representatives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="salesInvoice">Sales Invoices</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link text-white" h href="users.html"
+               th:href="@{/users}">Users</a>
+          </li>
+        </ul>
+        <div>
+          <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Logout </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<body>
+
+
+<!-- End navbar -->
+
+<div class="container">
+  <h1 class="display-2 pt-5 mb-5">Lizzy Autos</h1>
+
+  <div class="card mx-5">
+    <h2 class="mt-5">Update User</h2>
+    <hr />
+    <div class="mx-5">
+      <form
+              class="d-flex flex-column align-items-center p-3"
+              action="users.html"
+              th:action="@{/saveUser/{id}(id=${user.id})}"
+              th:method="POST"
+              th:object="${user}"
+      >
+        <!-- Add all hidden form fields to handle update -->
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{password}" />
+
+
+        <div class="form-group col-6">
+          <label for="firstName" class="form-control-label"
+          >First name</label
+          >
+          <input
+                  id="firstName"
+                  class="form-control text-center"
+                  th:field="*{firstName}"
+                  placeholder="First Name"
+          />
+        </div>
+
+
+        <div class="form-group col-6">
+          <label for="lastName" class="form-control-label">
+            Last name
+          </label>
+          <input
+                  id="lastName"
+                  class="form-control text-center"
+                  th:field="*{lastName}"
+                  placeholder="Last Name"
+          />
+        </div>
+
+        <!-- <input
+          type="text"
+          th:field="*{lastName}"
+          class="form-control mb-4 col-4"
+        /> -->
+
+        <div class="form-group col-6">
+          <label for="email" class="form-control-label"> E-mail </label>
+          <input
+                  id="email"
+                  class="form-control text-center"
+                  th:field="*{email}"
+                  placeholder="Email"
+          />
+        </div>
+
+
+        <div class="form-group col-6">
+          <label for="role" class="form-control-label"> Role </label>
+          <input
+                  id="role"
+                  class="form-control text-center"
+                  th:field="*{roleSet}"
+                  placeholder="Role"
+          />
+        </div>
+
+
+
+        <div class="form-group col-6 my-5">
+          <button type="submit" class="w-100 btn btn-primary btn-block">
+            Update
+          </button>
+        </div>
+
+
+      </form>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

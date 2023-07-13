@@ -1,8 +1,6 @@
 package com.perscholas.salesRep;
 
-import com.perscholas.car.Car;
 import com.perscholas.car.CarRepo;
-import com.perscholas.customer.Customer;
 import com.perscholas.customer.CustomerRepo;
 import com.perscholas.salesInvoice.SalesInvoice;
 import com.perscholas.salesInvoice.SalesInvoiceRepo;

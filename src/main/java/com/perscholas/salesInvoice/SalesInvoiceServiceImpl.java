@@ -5,7 +5,6 @@ import com.perscholas.car.CarRepo;
 import com.perscholas.customer.Customer;
 import com.perscholas.customer.CustomerRepo;
 import com.perscholas.salesRep.SalesRep;
-import com.perscholas.salesRep.SalesRepNotFoundException;
 import com.perscholas.salesRep.SalesRepRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -85,8 +85,9 @@ html::-webkit-scrollbar-track{
 .navbar{
     padding:20px;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     transition: 1s ease-in-out;
+
 }
 .navbar.scroll{
     background: rgb(133, 126, 126);
@@ -96,6 +97,8 @@ html::-webkit-scrollbar-track{
     font-size: 2cm;
     color:#fff !important;
     padding-left: 100px;
+    position: absolute;
+       left:0;
 }
 .navbar-brand span{
    font-weight: 800;
@@ -105,6 +108,9 @@ html::-webkit-scrollbar-track{
 .navbar-nav{
     padding-right: 40px;
 }
+
+
+
 .navbar-nav .nav-link{
     font-weight: bold;
     color:#fff !important;
@@ -711,3 +717,9 @@ visibility: visible;
 
     /*our staff section ends*/
 
+/
+
+      /*receipt Section starts*/
+
+
+ /* receipt Section Ends*

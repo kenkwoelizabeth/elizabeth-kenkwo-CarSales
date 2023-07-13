@@ -2,14 +2,13 @@ package com.perscholas.car;
 
 import com.perscholas.salesInvoice.SalesInvoice;
 import com.perscholas.salesRep.SalesRep;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 public interface CarService {
 
-
+    // defining the functionality provided by the service
     public List<Car> getAllCars();
 
     public void saveCar(Car car);

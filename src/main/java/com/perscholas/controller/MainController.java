@@ -1,39 +1,34 @@
-package com.perscholas.user;
+package com.perscholas.controller;
 
-
-import org.springframework.boot.actuate.endpoint.SecurityContext;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
-public class LoginController {
-
-
+public class MainController {
+    // *** Because of what's specified in SecurityConfiguration,
+    // this is the MAIN page when a user goes to http://localhost:8080
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
         return "login";
     }
-
-
-@GetMapping("/default")
-public String defaultAfterLogin(){
-    UserDetails userPrinciple= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    Collection<? extends GrantedAuthority> authorities = userPrinciple.getAuthorities();
-    System.out.println(authorities);
-    if(authorities.contains("ROLE_ADMIN")){
+    @GetMapping("/default")
+    public String defaultAfterLogin(){
+        UserDetails userPrinciple= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Collection<? extends GrantedAuthority> authorities = userPrinciple.getAuthorities();
+        System.out.println(authorities);
+        if(authorities.contains("ROLE_ADMIN")){
             return "redirect:/salesRep";
         }
         return "redirect:/car";
-}
+    }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){

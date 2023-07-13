@@ -39,7 +39,7 @@ public class Customer implements Serializable {
         this.customerAddress = customerAddress;
         this.salesInvoice = salesInvoice;
     }
-
+// getters and setters
     public int getCustomerId() {
         return customerId;
     }

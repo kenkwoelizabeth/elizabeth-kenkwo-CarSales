@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 
     <meta charset="utf-8">
@@ -41,6 +42,10 @@
                     </li>
 
 
+                    <li class="nav-item">
+                        <a class="nav-link text-white"  href="users.html"
+                           th:href="@{/users}">Users</a>
+                    </li>
                 </ul>
                 <div>
                     <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Logout </a>
@@ -88,13 +93,5 @@
 <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
 
 </body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
 </html>

@@ -3,8 +3,6 @@ package com.perscholas.salesInvoice;
 import com.perscholas.car.Car;
 import com.perscholas.customer.Customer;
 import com.perscholas.salesRep.SalesRep;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

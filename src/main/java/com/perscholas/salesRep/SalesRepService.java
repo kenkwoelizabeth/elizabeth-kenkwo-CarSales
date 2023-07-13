@@ -1,9 +1,6 @@
 package com.perscholas.salesRep;
 
-import com.perscholas.car.Car;
-import com.perscholas.customer.Customer;
 import com.perscholas.salesInvoice.SalesInvoice;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

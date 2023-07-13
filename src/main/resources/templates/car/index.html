@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -40,7 +41,10 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="salesInvoice">Sales Invoices</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link text-white"  href="users.html"
+                           th:href="@{/users}">Users</a>
+                    </li>
 
                 </ul>
                 <div>
@@ -78,10 +82,19 @@
             <td th:text="${car.carColour}"></td>
             <td th:text="${car.carYear}"></td>
             <td th:text="${car.carPrice}"></td>
+            <!-- to make this button visible for admins-->
+            <div sec:authorize="hasRole('ROLE_ADMIN')" >
+
+
             <td><a th:href="@{/my_cars/{id}(id=${car.carId})}"
                    class="btn btn-primary">Edit</a>
                 <a th:href="@{/deleteCar/{id}(id=${car.carId})}"
                    class="btn btn-danger">Delete</a>
+
+            </div>
+
+               <a th:href="@{/car/purchase/{id}(id=${car.carId})}"
+                  class="btn btn-primary" >Purchase</a>
             </td>
         </tr>
         </tbody>

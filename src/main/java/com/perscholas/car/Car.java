@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Table
 public class Car {
-
+// fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //fields
@@ -27,7 +27,7 @@ public class Car {
     private String carYear;
     private double carPrice;
 
-
+//object related mapping
     @OneToMany(targetEntity = SalesInvoice.class, cascade = CascadeType.ALL)
     private List salesInvoice;
 
@@ -36,10 +36,12 @@ public class Car {
     private SalesRep salesRep;
     // constructors
 
-
+// empty constructor
     public Car() {
     }
 
+
+    // non empty constructor
     public Car(String carMake, String carModel, String carColour, String carYear, double carPrice) {
 
         this.carMake = carMake;
@@ -51,7 +53,7 @@ public class Car {
 
     // getters and setters
 
-
+// getters and setters
     public int getCarId() {
         return carId;
     }

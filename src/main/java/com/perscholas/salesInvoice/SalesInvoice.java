@@ -7,7 +7,6 @@ import com.perscholas.salesRep.SalesRep;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table
