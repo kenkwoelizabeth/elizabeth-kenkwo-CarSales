@@ -28,9 +28,9 @@ public class UserController {
     public String getAll(Model model) {
         model.addAttribute("listUsers", userService.getAllUsers());
         List<User> allUsers = userService.getAllUsers();
-        for (User user: allUsers ) {
-            for (Role role: user.getRoleSet() ){
-                System.out.println(" print out here" + role.getName() );
+        for (User user : allUsers) {
+            for (Role role : user.getRoleSet()) {
+                System.out.println(" print out here" + role.getName());
 
             }
 
@@ -40,17 +40,16 @@ public class UserController {
     }
 
 
-
     @PostMapping("/saveUser/{id}")
     public String registerUserAccount(@PathVariable(value = "id") long id,
                                       @ModelAttribute("user") @Valid User user,
-                                      BindingResult result){
+                                      BindingResult result) {
 
         Logger logger = LoggerFactory.getLogger(UserController.class);
 
 //        User existing = userService.findByEmail(userDto.getEmail());
 
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             return "redirect:/users";
         }
 

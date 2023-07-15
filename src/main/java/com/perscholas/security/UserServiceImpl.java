@@ -31,11 +31,11 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    public User findByEmail(String email){
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    public User save(UserRegistrationDto registration){
+    public User save(UserRegistrationDto registration) {
         User user = new User();
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
@@ -45,11 +45,11 @@ public class UserServiceImpl implements UserService {
         // Supamas changed
         user.addRole(new Role("ROLE_USER"));
 
-        if(registration.getFirstName().startsWith("admin")) {
+        if (registration.getFirstName().startsWith("admin")) {
             user.addRole(new Role("ROLE_ADMIN"));
         }
 
-        if(registration.getFirstName().startsWith("superadmin")) {
+        if (registration.getFirstName().startsWith("superadmin")) {
             user.addRole(new Role("ROLE_ADMIN"));
             user.addRole(new Role("ROLE_SUPERADMIN"));
         }
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        if (user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
                 mapRolesToAuthorities(user.getRoleSet()));
     }
 
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
@@ -99,8 +99,8 @@ public class UserServiceImpl implements UserService {
         User user;
 
         try {
-        user = userRepository.getById(id);
-        } catch(EntityNotFoundException e) {
+            user = userRepository.getById(id);
+        } catch (EntityNotFoundException e) {
             throw new UserNotFoundException();
         }
         return user;
@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateRole(long id) {
-        User user=userRepository.getById(id);
+        User user = userRepository.getById(id);
         user.addRole(new Role("ROLE_ADMIN"));
         userRepository.save(user);
     }

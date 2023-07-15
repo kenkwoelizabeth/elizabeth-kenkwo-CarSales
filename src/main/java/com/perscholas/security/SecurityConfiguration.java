@@ -20,39 +20,39 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
-                    .antMatchers(
+                .antMatchers(
                         "/registration**",
                         "/js/**",
                         "/css/**",
                         "/images/**",
-                        "/webjars/**").permitAll()
-                .antMatchers("/login","/signup",
-                "/","/aboutUs","/careers","/frontendCars","/contactUs","/financing","/staffs","/users","/deleteUser/**").permitAll()
-                    .antMatchers( "/saveUser/**", "/showFormForUpdate/**")
-                        .hasAnyRole("SUPERADMIN")
-                    .antMatchers("/menu", "/showMenuItemForm", "saveMenuItem",
-                        "/showMenuItemFormForUpdate/**", "/deleteMenuItem/**",
-                        "/showOrderFormForUpdate/**", "/updateOrder", "/deleteOrder/**")
-                        .hasAnyRole("ADMIN", "SUPERADMIN")
-                    .antMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+                        "/webjars/**", "/api/**").permitAll()
+                .antMatchers("/login", "/signup",
+                        "/", "/aboutUs", "/careers", "/frontendCars", "/contactUs", "/financing", "/staffs").permitAll()
+                .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**")
+                .hasAnyRole("SUPERADMIN")
+                .antMatchers("/backEndCover", "/customer", "/my_customers", "/my_customers/**",
+                        "/saveCustomer", "/deleteCustomer/**", "/salesInvoice", "/my_salesInvoice", "/my_salesInvoice/**", "/saveSalesInvoice",
+                        "/deleteSalesInvoice/**", "/salesRep", "/my_salesReps", "/my_salesReps/**", "/saveSalesRep", "/deleteSalesRep/**")
+                .hasAnyRole("ADMIN", "SUPERADMIN")
+                .antMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
 
                 .anyRequest().authenticated()
                 .and()
-                    .formLogin()
-                        .loginPage("/login").permitAll()
-                        .defaultSuccessUrl("/car",true)
-                    .and()
-                        .logout()
-                            .invalidateHttpSession(true)
-                            .clearAuthentication(true)
-                            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                            .logoutSuccessUrl("/login?logout")
-                            .permitAll();
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/car", true)
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();
         // @formatter:on
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(userService);
         return auth;

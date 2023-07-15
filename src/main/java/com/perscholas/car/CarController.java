@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 @Controller
 public class CarController {
 
-// fields
+    // fields
     private CarService carService;
 
 
@@ -44,7 +44,7 @@ public class CarController {
         return "car/backEndCover";
     }
 
-// car page
+    // car page
     @GetMapping("/car")
     public String getAllCars(Model model) {
         model.addAttribute("listCars", carService.getAllCars());
@@ -119,8 +119,6 @@ public class CarController {
     }
 
 
-
-
     // receipt page
     @GetMapping("/car/purchase/{id}")
     public String purchaseCar(Model model, @PathVariable int id) {
@@ -136,7 +134,7 @@ public class CarController {
         model.addAttribute("car", car1);
         model.addAttribute("taxes", taxes);
         model.addAttribute("timestamp", timeStamp);
-       // carService.deleteCarById(id);
+        // carService.deleteCarById(id);
         return "frontend/receipt";
     }
 

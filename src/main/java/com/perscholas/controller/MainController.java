@@ -19,19 +19,20 @@ public class MainController {
     public String login(Model model) {
         return "login";
     }
+
     @GetMapping("/default")
-    public String defaultAfterLogin(){
-        UserDetails userPrinciple= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String defaultAfterLogin() {
+        UserDetails userPrinciple = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Collection<? extends GrantedAuthority> authorities = userPrinciple.getAuthorities();
         System.out.println(authorities);
-        if(authorities.contains("ROLE_ADMIN")){
+        if (authorities.contains("ROLE_ADMIN")) {
             return "redirect:/salesRep";
         }
         return "redirect:/car";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request) {
         HttpSession httpSession = request.getSession();
         httpSession.invalidate();
         return "redirect:/";

@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/api")
 public class RestCarController {
 
     private CarService carService;
@@ -18,13 +18,12 @@ public class RestCarController {
         this.carService = carService;
     }
 
-    @GetMapping("/")
-
+    @GetMapping("/car")
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
 
-    @GetMapping("/cars/{id}")
+    @GetMapping("/car/{id}")
     public Car getCar(@PathVariable(value = "id") int carId) {
         Car carById = carService.getCarById(carId);
         if (carById == null) {
