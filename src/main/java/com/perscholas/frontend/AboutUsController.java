@@ -17,7 +17,7 @@ public class AboutUsController {
         return "frontend/careers";
     }
 
-    @GetMapping("financing")
+    @GetMapping("/financing")
     public String financing(Model model) {
         return "frontend/financing";
     }

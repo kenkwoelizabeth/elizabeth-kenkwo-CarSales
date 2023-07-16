@@ -123,7 +123,7 @@ public class CarController {
     @GetMapping("/car/purchase/{id}")
     public String purchaseCar(Model model, @PathVariable int id) {
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
         String timeStamp = currentDateTime.format(formatter);
 
         Car car1 = carService.getCarById(id);
@@ -135,7 +135,7 @@ public class CarController {
         model.addAttribute("taxes", taxes);
         model.addAttribute("timestamp", timeStamp);
         // carService.deleteCarById(id);
-        return "frontend/receipt";
+        return "car/receipt";
     }
 
 }
