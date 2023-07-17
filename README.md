@@ -3,8 +3,9 @@
 Lizzy Autos is a car dealership website where clients could be able to book for the payment and 
 pickup of their car at the dealership center, to keep track of prospective car purchase made by clients.
 
-The application is design to showcase different cars available in the dealership having cars, customers, 
-sales representative and sales invoice, it could be modifies to fit any dealership requirements.
+
+The application has 4 main models (car, customer, sales representative, invoice) designed with
+unidirectional relationship, and an additional model for users and Role.
 
 
 
