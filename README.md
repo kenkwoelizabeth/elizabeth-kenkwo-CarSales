@@ -20,21 +20,21 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
 - [Lessons Learned](#lessons-learned)
 - [Future Improvements](#future-improvements)
 ## Run Locally
--To clone the project you write on the command line
-git clone https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales.git
+- To clone the project you write on the command line
+  - git clone https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales.git
 
--My database connection (application.properties file)
-server.port=8091
+- My database connection (application.properties file)
+  - server.port=8091
 
 - Use MySQL
-spring.datasource.url=jdbc:mysql://localhost:3306/cardb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
-spring.datasource.username=root
-spring.datasource.password=password
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+  - spring.datasource.url=jdbc:mysql://localhost:3306/cardb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+  - spring.datasource.username=root
+  - spring.datasource.password=password
+  - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 
 - Hibernate ddl auto (create, create-drop, validate, update)
-spring.jpa.hibernate.ddl-auto=update
-logging.level.web=trace
+  - spring.jpa.hibernate.ddl-auto=update
+  - logging.level.web=trace
 
 
 
