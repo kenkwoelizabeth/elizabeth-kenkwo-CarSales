@@ -12,7 +12,7 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
 
 ## Contents
 -[Run Locally](#run-locally)
-- [Presentation Slides]
+- [Presentation Slides](doc/presentation.pdf)
 - [Daily Progress](#daily-progress)
 - [Technical Architecture](doc/Lizzy-Autos-Technical-Architechture.pdf)
 - [Wire Frame](doc/Lizzy-autos-wireframe.pdf)
