@@ -11,22 +11,45 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
 
 
 ## Contents
-
-- [Case Study Rubrics]
+-[Run Locally](#run-locally)
 - [Presentation Slides]
-- [Daily Progress]
-- [User Stories](#user-stories)
-    - [Admin](#admin)
-    - [User](#user)
-- [Technical Architecture]
-- [Wire Frame]
-- [Schema Diagram]
-- [Jira]
+- [Daily Progress](#daily-progress)
+- [Technical Architecture](doc/Lizzy-Autos-Technical-Architechture.pdf)
+- [Wire Frame](doc/Lizzy-autos-wireframe.pdf)
 - [Technical Challenges](#technical-challenges)
 - [Lessons Learned](#lessons-learned)
 - [Future Improvements](#future-improvements)
+## Run Locally
+-To clone the project you write on the command line
+git clone https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales.git
+
+-My database connection (application.properties file)
+server.port=8091
+
+- Use MySQL
+spring.datasource.url=jdbc:mysql://localhost:3306/cardb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+spring.datasource.username=root
+spring.datasource.password=password
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+
+- Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto=update
+logging.level.web=trace
+
+
 
 ## Daily Progress
+- July 13th (100% done)
+  - Prepare my presentation slide
+  - Arrange my technical architecture
+  - Arrange my wireframe
+
+
+- July 13th (90% done)
+  - Worked on my rest controller for car class
+  - inline styling for my receipt page
+  - Reorganize some classes in my application
+
 - July 10th (85% done)
   - Worked on CRUD operation for my user
   - Linked my user to thymeleaf
@@ -53,20 +76,7 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
   - Attached my SBA frontend project to my application.
 
 
-## User Stories
 
-### Admin
 
-- As an admin, I want to log in with an admin privilege so that I can edit the list of cars, update
-  the make , model, price, etc.
-
-  - Tasks:
-    1. Create a database and a User table containing username, password and privilege.
-    2. Login screen asking for username and password.
-    3. Check if the username exists in the User table
-    4. Check if the password matches the entry in the table
-    5. Assign the privilege to the current user login session
-    6. If login is successful, show the main screen with options according to login privilege.
-  - Question: How to encrypt the password?
 
 
