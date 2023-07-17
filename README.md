@@ -12,7 +12,7 @@ unidirectional relationship, and an additional model for users and Role.
 
 
 ## Contents
--[Run Locally](#run-locally)
+- [Run Locally](#run-locally)
 - [Presentation Slides](doc/presentation.pdf)
 - [Daily Progress](#daily-progress)
 - [Technical Architecture](doc/Lizzy-Autos-Technical-Architechture.pdf)
