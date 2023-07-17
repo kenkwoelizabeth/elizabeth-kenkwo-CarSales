@@ -76,7 +76,11 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
   - Attached my SBA frontend project to my application.
 
 
+## Technical Challenges
 
+- Spring security: Ran into issues where I thought I was having a bug unbeknownst to me just little adjustment needed in the security configuration file.
+- Thyme leaf:  You have to be meticulous to handle your mappings in Thyme leaf, had issues template parsing was a problem due to syntax error.
+- CSS: Styling refuse to work in one of my template due to spring security, I had to fall back to inline CSS for just that one file.
 
 
 
