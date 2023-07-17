@@ -17,7 +17,6 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
 - [Technical Architecture](doc/Lizzy-Autos-Technical-Architechture.pdf)
 - [Wire Frame](doc/Lizzy-autos-wireframe.pdf)
 - [Technical Challenges](#technical-challenges)
-- [Lessons Learned](#lessons-learned)
 - [Future Improvements](#future-improvements)
 ## Run Locally
 - To clone the project you write on the command line
@@ -83,4 +82,7 @@ sales representative and sales invoice, it could be modifies to fit any dealersh
 - CSS: Styling refuse to work in one of my template due to spring security, I had to fall back to inline CSS for just that one file.
 
 
-
+## Future Improvements
+- Create a car payment page
+- Create buttons for their relationship
+- Having detailed pictures of each car
