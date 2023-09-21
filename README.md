@@ -1,5 +1,11 @@
 ## Car Dealership Application
 
+![car1](https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales/assets/46757955/97e7735d-dcbb-4a15-9f4a-64696d7a03c4)
+![car2](https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales/assets/46757955/a455c7c0-c9c0-4fe0-bc0f-6e14a20d207f)
+![car3](https://github.com/kenkwoelizabeth/elizabeth-kenkwo-CarSales/assets/46757955/953f1603-8e3d-4e1a-82ed-5f72a558f581)
+
+
+
 Lizzy Autos is a car dealership website where clients could be able to book for the payment and 
 pickup of their car at the dealership center, to keep track of prospective car purchase made by clients.
 
